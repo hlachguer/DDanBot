@@ -1,0 +1,369 @@
+:root {
+  --dd-primary: #033d4f;
+  --dd-primary-dark: #022f3d;
+  --dd-accent: #f98f30;
+  --dd-accent-dark: #e97812;
+  --dd-bg: #ffffff;
+  --dd-border: #dfe8e2;
+  --dd-text: #033d4f;
+  --dd-muted: #66756c;
+  --dd-user: #f98f30;
+  --dd-agent: #ffffff;
+  --dd-soft-bg: #f7fafb;
+  --dd-shadow: 0 18px 50px rgba(3, 61, 79, 0.22);
+  --dd-radius: 22px;
+  --dd-font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--dd-font);
+  color: var(--dd-text);
+}
+
+.demo-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 48px 24px;
+  background:
+    radial-gradient(circle at top left, rgba(31, 122, 77, 0.15), transparent 32%),
+    linear-gradient(135deg, #f8fbf8, #eef6f0);
+}
+
+.demo-page section {
+  max-width: 780px;
+}
+
+.demo-page h1 {
+  font-size: clamp(36px, 7vw, 72px);
+  margin: 0 0 18px;
+  letter-spacing: -0.05em;
+}
+
+.demo-page p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--dd-muted);
+}
+
+.eyebrow {
+  color: var(--dd-primary) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 800;
+  font-size: 13px !important;
+}
+
+.demo-card {
+  margin-top: 28px;
+  background: white;
+  border: 1px solid var(--dd-border);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.demo-card button {
+  border: 1px solid var(--dd-border);
+  background: #f6faf7;
+  color: var(--dd-text);
+  padding: 10px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.demo-card button:hover {
+  border-color: var(--dd-primary);
+}
+
+.dd-launcher {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  border: none;
+  background: var(--dd-primary);
+  color: white;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  box-shadow: var(--dd-shadow);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.dd-launcher:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: #e97812;
+}
+
+.dd-launcher svg {
+  width: 30px;
+  height: 30px;
+}
+
+.dd-widget {
+  position: fixed;
+  right: 24px;
+  bottom: 104px;
+  width: min(390px, calc(100vw - 32px));
+  height: min(650px, calc(100vh - 132px));
+  background: var(--dd-bg);
+  border: 1px solid var(--dd-border);
+  border-radius: var(--dd-radius);
+  box-shadow: var(--dd-shadow);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9999;
+  font-family: var(--dd-font);
+}
+
+.dd-widget.dd-open {
+  display: flex;
+}
+
+.dd-header {
+  background: #033d4f;
+  color: white;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dd-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  flex: 0 0 auto;
+}
+
+.dd-title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.dd-title {
+  font-weight: 800;
+  font-size: 16px;
+  margin: 0;
+}
+
+.dd-subtitle {
+  font-size: 12px;
+  opacity: 0.86;
+  margin-top: 2px;
+}
+
+.dd-close {
+  background: rgba(255, 255, 255, 0.14);
+  border: none;
+  color: white;
+  border-radius: 10px;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.dd-messages {
+  flex: 1;
+  padding: 18px;
+  overflow-y: auto;
+  background: linear-gradient(180deg, rgba(244, 248, 245, 0.9), rgba(255, 255, 255, 0.9));
+}
+
+.dd-message {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.dd-message.dd-user-message {
+  justify-content: flex-end;
+}
+
+.dd-bubble {
+  max-width: 82%;
+  padding: 11px 13px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.dd-agent-message .dd-bubble {
+  background: #ffffff;
+  color: #033d4f;
+  border: 1px solid rgba(3, 61, 79, 0.12);
+  border-bottom-left-radius: 5px;
+}
+
+.dd-user-message .dd-bubble {
+  background: #f98f30;
+  color: white;
+  border-bottom-right-radius: 5px;
+}
+
+.dd-bubble a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.dd-typing {
+  display: none;
+  align-items: center;
+  gap: 5px;
+  margin: 0 0 12px;
+}
+
+.dd-typing.dd-visible {
+  display: flex;
+}
+
+.dd-dot {
+  width: 7px;
+  height: 7px;
+  background: #9bad9f;
+  border-radius: 999px;
+  animation: ddPulse 1s infinite ease-in-out;
+}
+
+.dd-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.dd-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes ddPulse {
+  0%, 80%, 100% { opacity: 0.35; transform: translateY(0); }
+  40% { opacity: 1; transform: translateY(-3px); }
+}
+
+.dd-form {
+  border-top: 1px solid var(--dd-border);
+  padding: 12px;
+  background: white;
+  display: flex;
+  gap: 8px;
+}
+
+.dd-input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--dd-border);
+  border-radius: 999px;
+  padding: 12px 14px;
+  font: inherit;
+  outline: none;
+}
+
+.dd-input:focus {
+  border-color: var(--dd-primary);
+  box-shadow: 0 0 0 3px rgba(31, 122, 77, 0.12);
+}
+
+.dd-send {
+  border: none;
+  background: #033d4f;
+  color: white;
+  border-radius: 999px;
+  padding: 0 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.dd-send:hover {
+  background: #022f3d;
+}
+
+.dd-lead-form {
+  display: none;
+  border-top: 1px solid var(--dd-border);
+  padding: 12px;
+  background: #fbfdfb;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.dd-lead-form.dd-visible {
+  display: flex;
+}
+
+.dd-lead-row {
+  display: flex;
+  gap: 8px;
+}
+
+.dd-lead-form input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--dd-border);
+  border-radius: 12px;
+  padding: 11px 12px;
+  font: inherit;
+}
+
+.dd-lead-form button {
+  border: none;
+  background: #033d4f;
+  color: white;
+  border-radius: 12px;
+  padding: 11px 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.dd-small {
+  color: var(--dd-muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+@media (max-width: 540px) {
+  .dd-widget {
+    right: 12px;
+    left: 12px;
+    width: auto;
+    bottom: 92px;
+  }
+
+  .dd-launcher {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    border: none;
+    background: #f98f30;
+    color: white;
+    width: 64px;
+    height: 64px;
+    border-radius: 999px;
+    box-shadow: var(--dd-shadow);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    z-index: 9999;
+    transition: transform 160ms ease, background 160ms ease;
+  }
+
+  .dd-lead-row {
+    flex-direction: column;
+  }
+}
